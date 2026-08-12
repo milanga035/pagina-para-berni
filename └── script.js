@@ -1,4 +1,4 @@
-```javascript
+javascript
 /* ==========================================
    ELEMENTOS DE LA PÁGINA
 ========================================== */
@@ -264,4 +264,3 @@ document.addEventListener(
 
     }
 );
-```
