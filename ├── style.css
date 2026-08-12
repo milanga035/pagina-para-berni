@@ -1,0 +1,608 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ff4f81;
+    --dark-pink: #e6386c;
+    --light-pink: #fff0f4;
+    --text: #35232a;
+    --soft-text: #806b72;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "DM Sans", sans-serif;
+    color: var(--text);
+
+    background:
+        radial-gradient(circle at 20% 20%, #ffdce7 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, #ffe7ef 0%, transparent 30%),
+        linear-gradient(135deg, #fff8fa, #ffeef3);
+
+    position: relative;
+}
+
+/* Fondo */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 79, 129, 0.08);
+
+    filter: blur(60px);
+
+    top: -150px;
+    right: -150px;
+
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 170, 195, 0.15);
+
+    filter: blur(60px);
+
+    bottom: -100px;
+    left: -100px;
+
+    z-index: -2;
+}
+
+/* Corazones decorativos */
+
+.background-hearts::before,
+.background-hearts::after {
+    content: "♥   ♥   ♥   ♥   ♥";
+
+    position: fixed;
+
+    color: rgba(255, 79, 129, 0.12);
+
+    font-size: 25px;
+
+    letter-spacing: 45px;
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    animation: floatingBackground 12s linear infinite;
+
+    z-index: -1;
+}
+
+.background-hearts::before {
+    top: 10%;
+    left: -100px;
+}
+
+.background-hearts::after {
+    bottom: 15%;
+    right: -100px;
+    animation-delay: -6s;
+}
+
+@keyframes floatingBackground {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(80px) translateY(-30px);
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+/* Contenedor */
+
+.container {
+    width: 100%;
+    max-width: 680px;
+
+    padding: 25px;
+
+    position: relative;
+    z-index: 2;
+}
+
+/* Tarjetas */
+
+.card,
+.success-card {
+    background: rgba(255, 255, 255, 0.85);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    border-radius: 30px;
+
+    padding: 55px 45px;
+
+    text-align: center;
+
+    box-shadow:
+        0 30px 80px rgba(160, 62, 91, 0.12),
+        0 5px 20px rgba(160, 62, 91, 0.05);
+
+    animation: cardAppear 1s ease;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Corazón */
+
+.heart-icon {
+    width: 75px;
+    height: 75px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: var(--light-pink);
+
+    color: var(--pink);
+
+    font-size: 35px;
+
+    box-shadow: 0 10px 30px rgba(255, 79, 129, 0.15);
+
+    animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(1.12);
+    }
+
+    20% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.12);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* Textos */
+
+.small-title {
+    color: var(--pink);
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 15px;
+}
+
+h1,
+h2 {
+    font-family: "Playfair Display", serif;
+
+    line-height: 1.15;
+
+    font-weight: 600;
+}
+
+h1 {
+    font-size: clamp(40px, 7vw, 60px);
+
+    margin-bottom: 25px;
+}
+
+.message {
+    max-width: 500px;
+
+    margin: 0 auto 15px;
+
+    color: var(--soft-text);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+/* Música */
+
+.music-box {
+    margin: 30px auto 10px;
+
+    padding: 18px;
+
+    max-width: 450px;
+
+    background: rgba(255, 240, 244, 0.8);
+
+    border: 1px solid #ffd4df;
+
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(255, 79, 129, 0.08);
+}
+
+.music-box p {
+    color: var(--dark-pink);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.music-box iframe {
+    border-radius: 12px;
+
+    display: block;
+}
+
+/* Separador */
+
+.divider {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 30px 0;
+
+    color: var(--pink);
+
+    font-size: 14px;
+}
+
+.divider span {
+    width: 60px;
+
+    height: 1px;
+
+    background: #f4c8d4;
+}
+
+/* Pregunta */
+
+.question {
+    font-family: "Playfair Display", serif;
+
+    font-size: 30px;
+
+    line-height: 1.5;
+
+    margin-bottom: 30px;
+}
+
+/* Botones */
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.yes-button {
+    border: none;
+
+    padding: 15px 30px;
+
+    border-radius: 100px;
+
+    background: linear-gradient(
+        135deg,
+        var(--pink),
+        var(--dark-pink)
+    );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 25px rgba(255, 79, 129, 0.3);
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.yes-button:hover {
+    transform: translateY(-4px) scale(1.03);
+
+    box-shadow: 0 15px 30px rgba(255, 79, 129, 0.4);
+}
+
+.yes-button:active {
+    transform: scale(0.96);
+}
+
+.secondary {
+    background: white;
+
+    color: var(--pink);
+
+    border: 2px solid #ffd0dc;
+
+    box-shadow: none;
+}
+
+.secondary:hover {
+    background: #fff5f7;
+
+    box-shadow: 0 10px 25px rgba(255, 79, 129, 0.1);
+}
+
+.hint {
+    margin-top: 20px;
+
+    color: #a59097;
+
+    font-size: 12px;
+}
+
+/* Pantalla final */
+
+.hidden {
+    display: none;
+}
+
+.success-card {
+    animation: successAppear 0.8s ease;
+}
+
+@keyframes successAppear {
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.7)
+            rotate(-3deg);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
+    }
+}
+
+.big-heart {
+    font-size: 85px;
+
+    margin-bottom: 15px;
+
+    animation:
+        bigHeart
+        1s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+@keyframes bigHeart {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.12);
+    }
+}
+
+.success-card h2 {
+    font-size: clamp(42px, 8vw, 65px);
+
+    margin-bottom: 25px;
+}
+
+.success-message {
+    max-width: 450px;
+
+    margin: auto;
+
+    color: var(--soft-text);
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+.final-message {
+    margin: 30px auto 15px;
+
+    color: var(--pink);
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 23px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    align-items: center;
+}
+
+.final-small {
+    color: var(--soft-text);
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+.restart-button {
+    border: none;
+
+    background: transparent;
+
+    color: #a59097;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+/* Corazones volando */
+
+.floating-heart {
+    position: fixed;
+
+    bottom: -50px;
+
+    font-size: 25px;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    animation: flyHeart linear forwards;
+}
+
+@keyframes flyHeart {
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.8);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg)
+            scale(1.5);
+
+        opacity: 0;
+    }
+}
+
+/* Celebración */
+
+.celebration {
+    animation: celebrationFlash 0.6s ease;
+}
+
+@keyframes celebrationFlash {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Celulares */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 15px;
+    }
+
+    .card,
+    .success-card {
+        padding: 40px 25px;
+
+        border-radius: 25px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .question {
+        font-size: 26px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .yes-button {
+        width: 100%;
+    }
+
+    .heart-icon {
+        width: 65px;
+        height: 65px;
+    }
+}
